@@ -75,6 +75,24 @@ final Node<K,V> getNode(int hash, Object key) {
     return null;
 }
 ```
-## 5：HashMap和HashTale和ConcurrentHashmap的区别联系
+## 5：震惊！多线程下使用HashMap会导致死循环而让CPU 100%
+  在JDK7中，每次当MAP的容量超过最大容量后，会进行一次扩容。（这里注意，扩容是加完新元素后进行的扩容）在执行rsize的过程中，会遍历原有的MAP，重新进行一次ReHash的过程，这里的算法是遍历一个节点即加进对应的新的MAP的桶数组中，如果已经有了，类似于头插法，即和原链表是逆着的。如果同时有多个线程进行ReHash的过程，可能会带来死循环。
+  
+ 假设有两个线程
+ ```
+ do {
+    Entry<K,V> next = e.next; //  假设线程一执行到这里就被调度挂起了，而此时线程二已经完成了一次rehash
+    int i = indexFor(e.hash, newCapacity);
+    e.next = newTable[i];
+    newTable[i] = e;
+    e = next;
+} while (e != null);
+```
+
+在之后参考（https://www.cnblogs.com/williamjie/p/11089522.html）的图片演示，会导致出现环形链表。
+
+在JDK1.8之后，通过限制顺序，修复了这个问题，但在多线程下PUT的时候，仍会数据丢失，这时候就要使用线程安全的同步类和并发类啦
+
+## 6：HashMap和HashTale和ConcurrentHashmap的区别联系
 [后边会有一篇文章专门介绍](https://mp.csdn.net).
 
