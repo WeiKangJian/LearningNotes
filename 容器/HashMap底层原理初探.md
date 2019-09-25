@@ -1,4 +1,13 @@
-﻿@[TOC]
+
+   * [HashMap底层原理初探]()
+      * [1：HashMap的数据结构]()
+      * [2：HashMap的散列算法]()
+      * [3：HashMap的扩容机制]()
+      * [4：HashMap的get和put]()
+         * [put]()
+         * [get]()
+      * [5：HashMap和HashTale和ConcurrentHashmap的区别联系]()
+
 # HashMap底层原理初探
 **2019.9.25**
 ## 1：HashMap的数据结构
