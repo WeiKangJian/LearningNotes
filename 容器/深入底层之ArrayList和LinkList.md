@@ -1,4 +1,15 @@
-﻿# 一 ArrayList
+**2019.9.26**
+   * [一 ArrayList]()
+      * [底层实现]()
+      * [扩容机制]()
+      * [copyOf和System.arraycopy()]()
+         * [联系：]()
+         * [区别：]()
+      * [方法使用]()
+   * [二 LinkList]()
+      * [底层实现]()
+      * [方法使用]()
+# 一 ArrayList
 ## 底层实现
 继承了AbstractList类，同时实现了List,RondomAccess,Cloneable,Serializable等接口
 意味着其能实现随机查询，存储，可序列化（不用自己设计实现）
