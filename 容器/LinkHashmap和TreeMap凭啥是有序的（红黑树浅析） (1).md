@@ -1,6 +1,6 @@
-﻿# LinkHashMap
-**2019.9.26**
+*2019.9.26**
 
+# LinkHashMap
 其实LinkHashMap和HashMap的差别并没有很大，
 其实Entry甚至是继承的HashMap，但是在原有的Entry中新增加了两个引用，*befor*和*After*，
 一个指向前一个插入的entry一个指向后一个插入的entry，构成了一个双向链表。轻松实现了
