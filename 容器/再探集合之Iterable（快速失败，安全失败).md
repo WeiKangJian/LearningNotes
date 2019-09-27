@@ -1,9 +1,11 @@
 **2019.9.27**
-  * [再探集合组件之Iterable](#再探集合组件之iterable)
+   * [再探集合组件之Iterable](#再探集合组件之iterable)
+      * [Iterator底层原理](#iterator底层原理)
       * [快速失败和安全失败](#快速失败和安全失败)
       * [Iterator和ListIterator关系](#iterator和listiterator关系)
       
 # 再探集合组件之Iterable
+## Iterator底层原理
 Iterator是定义在java.util下面的一个接口，定义了需要实现的几个方法。
 **hasNext**      
 **next**
