@@ -1,5 +1,6 @@
-﻿# 初探Spring之IOC
-@[TOC](文章目录)
+**2019.9.28**
+
+# 初探Spring之IOC
 ## IOC理解
 ### IOC控制反转概念
 过去我们生成对象的控制权都是掌握在自己的手里，需要对象的时候就自己取new一个出来。这样建立的各个对象之间耦合的十分紧密，对象之间的依赖关系也是特别复杂，对系统的扩展，维护带来了很大的困难。
@@ -106,8 +107,13 @@ public class Product {
         Product sub = (Product) context.getBean("subway");
         System.out.println(car.getName()+" "+sub.getName()+" "+sub.getCategory().getName());
 ```
+
+
 **输出结果**
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190928215910440.png)
+
+
 ### 注解的形式
 注解的形式相比于XML方式较为简洁，却增加了理解的难度和代码之间的耦合度，虽然逻辑上各个组件之间仍然是解耦的，但代码上却暴露了对象间的交互。
 
@@ -188,12 +194,18 @@ public class Product {
 ```
 **XML配置文件**
 只需要配置Spring自己扫描的范围就可以了
+
 ```
 <context:component-scan base-package="net.bewithu"/>
 
 ```
+
+
 **输出结果**
+
+
 由于每个类的属性没有初始化，为NULL
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190928221600444.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQwODQzNjM5,size_16,color_FFFFFF,t_70)
 
 除了以上列出的几个注解的关键字，还有很多关键字（自动找最近的，指定子类等）不一一列出，作用各不相同。后面还会介绍AOP的使用。以及IOC和AOP的实现原理的探究。
