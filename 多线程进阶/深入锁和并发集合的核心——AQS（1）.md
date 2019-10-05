@@ -1,5 +1,17 @@
-﻿# 深入锁和并发集合的核心——AQS（1）
-@[TOC](目录)
+**2019.10.5**
+
+   * [深入锁和并发集合的核心——AQS（1）](#深入锁和并发集合的核心aqs1)
+      * [AQS的和ReentrantLock的关系](#aqs的和reentrantlock的关系)
+      * [AQS的设计模式](#aqs的设计模式)
+      * [AQS主要字段（组成部分）](#aqs主要字段组成部分)
+      * [AQS需要子类去实现的方法](#aqs需要子类去实现的方法)
+      * [AQS上锁原理](#aqs上锁原理)
+      * [公平锁和非公平锁底层原理](#公平锁和非公平锁底层原理)
+         * [公平锁](#公平锁)
+         * [非公平锁](#非公平锁)
+         * [总结](#总结)
+
+# 深入锁和并发集合的核心——AQS（1）
 ## AQS的和ReentrantLock的关系
 在Java提供的并发包下，会发现一大批并发集合，在这些集合中都用到了ReentrantLock的工具来保障线程安全。
 (注意，lock的主体是AQS，而syncrynized的同步机制是靠监视器和底层指令实现的)。
@@ -7,8 +19,12 @@
 先来看看在我们new一个ReentrantLock的对象，在调用lock()方法的时候究竟调用了什么。
 
 当我们new一个ReentrantLock的对象的时候，要进行初始化首先有一个还未被初始化的核心成员变量sync(同步基元)。后面的lock等核心方法由它来实现。
+
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20191005184041365.png)
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20191005183445634.png)
+
 再来看看ReentrantLock的构造器：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20191005183810683.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQwODQzNjM5,size_16,color_FFFFFF,t_70)
 其有两种构造器，在没有参数的时候默认new的的非公平的基元，在指定参数为true的时候则new的是公平的基元。那么这个sync究竟是怎么来的，其构造如何呢：
