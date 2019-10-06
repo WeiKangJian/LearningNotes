@@ -147,6 +147,7 @@
    
      选择器维护注册过的通道的集合，并且这种注册关系都被封装在SelectionKey当中.
    - 停止选择的方法
+   
      
 #### NIO实现的demo
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20191006202016860.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQwODQzNjM5,size_16,color_FFFFFF,t_70)
