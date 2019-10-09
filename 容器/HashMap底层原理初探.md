@@ -93,5 +93,5 @@ final Node<K,V> getNode(int hash, Object key) {
 在JDK1.8之后，通过限制顺序，修复了这个问题，但在多线程下PUT的时候，仍会数据丢失，这时候就要使用线程安全的同步类和并发类啦
 
 ## 6：HashMap和HashTale和ConcurrentHashmap的区别联系
-[后边会有一篇文章专门介绍](https://mp.csdn.net).
+[后边会有一篇文章专门介绍](https://github.com/wkj6622531/LearningNotes/blob/master/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%BF%9B%E9%98%B6/%E6%B7%B1%E5%85%A5%E9%94%81%E5%92%8C%E5%B9%B6%E5%8F%91%E7%9A%84%E6%A0%B8%E5%BF%83%E2%80%94%E2%80%94%E5%B9%B6%E5%8F%91%E9%9B%86%E5%90%88%EF%BC%882%EF%BC%89.md#%E4%BA%8C-concurrenthashmap).
 
