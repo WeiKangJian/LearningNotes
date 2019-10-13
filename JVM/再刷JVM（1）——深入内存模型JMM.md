@@ -36,14 +36,36 @@
 ##  深入new对象的过程
  从老生常谈的生成对象的5个步骤说起：
  ### 类加载检查&&类加载器&&双亲委派模型
- **类加载检查：**
+###  **类加载检查：**
 虚拟机遇到一条 new 指令时，首先将去检查这个指令的参数是否能在常量池中定位到这个类的符号引用，并且检查这个符号引用代表的类是否已被加载过、解析和初始化过。如果没有，那必须先执行相应的类加载过程。
-类加载的过程包括三个过程：**加载，链接，初始化**
+类加载的过程包括三个过程：**加载，链接（验证准备解析），初始化**
 可以描述为将字节码（即指令，16进制，1个指令对应两个字节）实例化为Class对象，其中包括类的属性，方法等信息。在链接阶段进行验证，准备，解析，初始化阶段执行类构造器的Cinit方法。Class对象和反射的关系紧密，是反射的基础，甚至可以通过其newInstance来创造对象，（这种形式只能创建无参对象）。这时候如果需要加载父类会先加载父类。**在初始化的时候，会执行静态代码块**。
-**类加载器**
-**双亲委派模型**
- ### 分配内存
- ### 初始化零值
- ### 生成对象头
- ### 执行init方法
 
+**类加载器和双亲委派模型**
+加载器在JAVA中自带的分为三类，从上至下是BootStrap	ClassLoader，启动类加载器，Platromm	ClassLoader，平台类加载器。ApplicationClassLoader应用类加载器。
+
+启动类加载器：加载JAVA中主要的lang等基类，在rt目录下的javaJDK
+平台类加载器：加载lib下，项目需要的一些类库
+应用类加载器：加载用户自定义的类，即用户所写的程序的类
+
+在双亲委派模型中，是经过询问和响应的，当需要加载类的时候向上请求，上层再向上请求，最上层查看自己能否加载这个类，加载不了交给下层，这样一层一层向上向下来加载该类。
+
+ ### 分配内存
+ 在确定类可以加载后，需要为每个对象分配内存，所需内存的大小在类加载完成后就能确定。分配的方式由空闲列表法和指针碰撞法，根据eden区的回收算法来判断（标记整理：指针碰撞。标记清除：空闲列表）。为了解决多线程中并发生成对象的发生，指针碰撞发法中有了TLAB，线程分配缓冲，每个线程占据一部分空间，解决冲突。
+ ### 初始化零值
+ 内存分配完成后，虚拟机需要将分配到的内存空间都初始化为零值（不包括对象头），这一步操作保证了对象的实例字段在 Java 代码中可以不赋初始值就直接使用，程序能访问到这些字段的数据类型所对应的零值。
+ ### 生成对象头
+ 初始化零值完成之后，虚拟机要对对象进行必要的设置，例如这个对象是那个类的实例、如何才能找到类的元数据信息、对象的哈希码、对象的 GC 分代年龄等信息。 这些信息存放在对象头中。 另外，根据虚拟机当前运行状态的不同，如是否启用偏向锁等，对象头会有不同的设置方式。著名的偏向锁，轻量级锁，重量级锁的标志位也在对象头中。
+ ### 执行init方法
+ 在上面工作都完成之后，从虚拟机的视角来看，一个新的对象已经产生了，但从 Java 程序的视角来看，对象创建才刚开始，<init> 方法还没有执行，所有的字段都还为零。所以一般来说，执行 new 指令之后会接着执行 <init> 方法，把对象按照程序员的意愿进行初始化，这样一个真正可用的对象才算完全产生出来。
+
+## 对象的内存布局
+在 Hotspot 虚拟机中，对象在内存中的布局可以分为 3 块区域：对象头、实例数据和对齐填充。
+
+Hotspot 虚拟机的对象头包括两部分信息，第一部分用于存储对象自身的自身运行时数据（哈希码、GC 分代年龄、锁状态标志等等），另一部分是类型指针，即对象指向它的类元数据的指针，虚拟机通过这个指针来确定这个对象是那个类的实例。这是直接指针的方式。如果通过句柄的方式，是在句柄中定义了指向对象的指针和类元信息的指针。
+![在这里插入图片描述](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9jYW1vLmdpdGh1YnVzZXJjb250ZW50LmNvbS8wYWUzMDliMDU4YjQ1ZWUxNDAwNGNkMDAxZTMzNDM1NTIzMWIyMjQ2LzY4NzQ3NDcwNzMzYTJmMmY2ZDc5MmQ2MjZjNmY2NzJkNzQ2ZjJkNzU3MzY1MmU2ZjczNzMyZDYzNmUyZDYyNjU2OTZhNjk2ZTY3MmU2MTZjNjk3OTc1NmU2MzczMmU2MzZmNmQyZjMyMzAzMTM5MmQzNjJmMjU0NTM1MjU0MTQ2MjU0MjM5MjU0NTM4MjU0MjMxMjU0MTMxMjU0NTM3MjUzOTQxMjUzODM0MjU0NTM4MjU0MTQ1MjU0MjQ2MjU0NTM5MjUzOTM3MjU0MTQ1MjU0NTM1MjU0MTQ1MjUzOTQxMjU0NTM0MjU0MjQ0MjUzODQ0MmQyNTQ1MzcyNTM5NDIyNTQyMzQyNTQ1MzYyNTM4NDUyNTQxMzUyNTQ1MzYyNTM4NDMyNTM4MzcyNTQ1MzkyNTM5MzIyNTM4MzgyZTcwNmU2Nw?x-oss-process=image/format,png)
+![在这里插入图片描述](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9jYW1vLmdpdGh1YnVzZXJjb250ZW50LmNvbS8wNGM4MmI0NjEyMTE0OWM4Y2M5YzNiODFlMTg5NjdhNWNlMDYzNTNmLzY4NzQ3NDcwNzMzYTJmMmY2ZDc5MmQ2MjZjNmY2NzJkNzQ2ZjJkNzU3MzY1MmU2ZjczNzMyZDYzNmUyZDYyNjU2OTZhNjk2ZTY3MmU2MTZjNjk3OTc1NmU2MzczMmU2MzZmNmQyZjMyMzAzMTM5MmQzNjJmMjU0NTM1MjU0MTQ2MjU0MjM5MjU0NTM4MjU0MjMxMjU0MTMxMjU0NTM3MjUzOTQxMjUzODM0MjU0NTM4MjU0MTQ1MjU0MjQ2MjU0NTM5MjUzOTM3MjU0MTQ1MjU0NTM1MjU0MTQ1MjUzOTQxMjU0NTM0MjU0MjQ0MjUzODQ0MmQyNTQ1MzQyNTQyNDQyNTQyNDYyNTQ1MzcyNTM5MzQyNTQxMzgyNTQ1MzUyNTM4NDYyNTQxMzUyNTQ1MzYyNTM5NDYyNTM4MzQyZTcwNmU2Nw?x-oss-process=image/format,png)
+
+**实例数据**部分是对象真正存储的有效信息，也是在程序中所定义的各种类型的字段内容。
+
+对齐填充部分不是必然存在的，也没有什么特别的含义，仅仅起占位作用。 spot虚拟机中规定对象的地址是8字节的整数倍，对象的大小也是8字节的整数倍，在没有达到分配的内存时，需要填充。
