@@ -1,4 +1,19 @@
-﻿# 再刷JVM（1）——深入内存模型JMM
+**2019.10.13**
+   * [再刷JVM（1）——深入内存模型JMM](#再刷jvm1深入内存模型jmm)
+      * [运行时数据区一览](#运行时数据区一览)
+         * [<strong>线程独有</strong>](#线程独有)
+         * [<strong>线程共享</strong>](#线程共享)
+         * [堆中细致的分代机制和垃圾回收算法](#堆中细致的分代机制和垃圾回收算法)
+         * [判断是否回收对象的方式](#判断是否回收对象的方式)
+      * [深入new对象的过程](#深入new对象的过程)
+         * [类加载检查&amp;&amp;类加载器&amp;&amp;双亲委派模型](#类加载检查类加载器双亲委派模型)
+         * [<strong>类加载检查：</strong>](#类加载检查)
+         * [分配内存](#分配内存)
+         * [初始化零值](#初始化零值)
+         * [生成对象头](#生成对象头)
+         * [执行init方法](#执行init方法)
+      * [对象的内存布局](#对象的内存布局)
+# 再刷JVM（1）——深入内存模型JMM
 ## 运行时数据区一览
 ![在这里插入图片描述](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9jYW1vLmdpdGh1YnVzZXJjb250ZW50LmNvbS8wYmNjNmMwMWE5MTliMTc1ODI3ZjBkNTU0MGFlZWMxMTVkZjZjMDAxLzY4NzQ3NDcwNzMzYTJmMmY2ZDc5MmQ2MjZjNmY2NzJkNzQ2ZjJkNzU3MzY1MmU2ZjczNzMyZDYzNmUyZDYyNjU2OTZhNjk2ZTY3MmU2MTZjNjk3OTc1NmU2MzczMmU2MzZmNmQyZjMyMzAzMTM5MmQzMzRhNjE3NjYxZThiZjkwZThhMThjZTY5N2I2ZTY5NWIwZTY4ZGFlZTU4Y2JhZTU5ZjlmNGE0NDRiMzEyZTM4MmU3MDZlNjc?x-oss-process=image/format,png)
 已经看过一遍深入虚拟机，上面的运行时数据区域不会陌生。
