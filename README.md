@@ -39,7 +39,7 @@
 
 ## :floppy_disk: 数据库
 - [MySQL]
-- [Redis]
+- [Redis](https://github.com/WeiKangJian/LearningNotes/blob/master/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3/Redis%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93.md)
 ***
 ## :apple: 网络
 - [深入了解HTTPS](https://github.com/WeiKangJian/LearningNotes/blob/master/%E7%BD%91%E7%BB%9C%E7%9B%B8%E5%85%B3/%E6%B7%B1%E5%85%A5%E4%BA%86%E8%A7%A3HTTPS.md)
