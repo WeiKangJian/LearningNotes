@@ -7,6 +7,7 @@
 
 ## IOC初始化阶段
 ![在这里插入图片描述](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9jbG91ZC5naXRodWJ1c2VyY29udGVudC5jb20vYXNzZXRzLzE3MzYzNTQvNzg5NzM0MS8wMzIxNzliZS0wNzBiLTExZTUtOWVjZi1kN2JlZmM4MDRlOWQucG5n?x-oss-process=image/format,png)
+
 先看这样的一张图，了解Sping IOC的大致构建过程，之前我们已经了解过反射的机制和其能动态构建一个对象，在上图中IOC的机制是从XML中读取对象和对象的各种属性，构造器，构造器等，（Resource)。获取到对象的信息后，将之作为BeanDefition注入到BeanFactory中，在工厂中保存着两个MAP，一个是BeanName和BeanFactory即确定待实例化的对象名称，和BeanDefition，即<String,BeanDefition>.还有一个是当前已经创建好了的对象，如果再遇到请求，直接拿出来用即可。即<String,object>。
 
 来看系统初始化IOC容器时候的栈调用图
