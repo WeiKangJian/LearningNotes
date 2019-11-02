@@ -29,9 +29,9 @@
 
 # :bulb: 框架学习
 - [初探Spring之IOC](https://github.com/WeiKangJian/LearningNotes/blob/master/%E6%A1%86%E6%9E%B6/Spring/%E5%88%9D%E6%8E%A2Spring%E4%B9%8BIOC.md)
-- [再探SpringIOC，深入源码了解构建过程](https://github.com/WeiKangJian/LearningNotes/blob/master/%E6%A1%86%E6%9E%B6/Spring/%E5%86%8D%E6%8E%A2SpringIOC%EF%BC%8C%E6%B7%B1%E5%85%A5%E6%BA%90%E7%A0%81%E4%BA%86%E8%A7%A3%E6%9E%84%E5%BB%BA%E8%BF%87%E7%A8%8B.md)
+- [再探SpringIOC（1），深入源码了解构建过程](https://github.com/WeiKangJian/LearningNotes/blob/master/%E6%A1%86%E6%9E%B6/Spring/%E5%86%8D%E6%8E%A2SpringIOC%EF%BC%8C%E6%B7%B1%E5%85%A5%E6%BA%90%E7%A0%81%E4%BA%86%E8%A7%A3%E6%9E%84%E5%BB%BA%E8%BF%87%E7%A8%8B.md)
+- [再探SpringIOC（2），了解作用域和生命周期](https://github.com/WeiKangJian/LearningNotes/blob/master/%E6%A1%86%E6%9E%B6/Spring/%E5%86%8D%E6%8E%A2SpringIOC%EF%BC%8C%E4%BA%86%E8%A7%A3bean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%92%8C%E4%BD%9C%E7%94%A8%E5%9F%9F%20(1).md)
 - [初探SpringAOP]
-- [再探SpringIOC，深入源码了解构建过程]
 - [SpringBoot集成和配置]
 - [SpringBoot中拦截器和权限验证]
 
