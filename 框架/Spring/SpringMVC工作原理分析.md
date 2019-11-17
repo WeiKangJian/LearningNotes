@@ -1,4 +1,8 @@
-﻿# SpringMVC工作原理分析
+   * [SpringMVC工作原理分析](#springmvc工作原理分析)
+      * [MVC和用户交互过程](#mvc和用户交互过程)
+      * [SpringMVC工作原理和适配器模式](#springmvc工作原理和适配器模式)
+      * [SpringMVC 重要组件说明](#springmvc-重要组件说明)
+# SpringMVC工作原理分析
 部分素材来源于：[https://github.com/WeiKangJian/JavaGuide/blob/master/docs/system-design/framework/spring/SpringMVC-Principle.md](https://github.com/WeiKangJian/JavaGuide/blob/master/docs/system-design/framework/spring/SpringMVC-Principle.md)
 
 在本科时候，最早开始学的是简单的jsp+servlet来进行网页开发，后来又使用了SSM等框架来完成，一直都有老师在强调MVC，也知道model,view,controler等三个部分，但对于mvc尤其是在Spring中具体的实现过程没有去深究，直到今天特意整理了一下这方面的知识体系：
