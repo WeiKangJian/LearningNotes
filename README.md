@@ -58,7 +58,7 @@
 
 ## :eyes:搜索引擎
 - [lucene源码阅读]
-- [solr配置和数据库导入]
+- [solr配置和数据库导入](https://github.com/WeiKangJian/LearningNotes/blob/master/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/solr%E5%9F%BA%E7%A1%80.md)
 - [solr导入项目——搜索引擎实战]
 - [ES初步了解，有时间再实现]
 
