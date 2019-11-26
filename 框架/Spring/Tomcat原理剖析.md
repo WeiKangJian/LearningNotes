@@ -1,4 +1,15 @@
-﻿# Tomcat原理剖析
+ 2019.11.26
+ 
+ * [Tomcat原理剖析](#tomcat原理剖析)
+      * [Tomcat与Servlet](#tomcat与servlet)
+      * [Socket](#socket)
+      * [Tomcat运行示意图](#tomcat运行示意图)
+      * [Tomcat的三个IO模型](#tomcat的三个io模型)
+      * [Tomcat参数调优](#tomcat参数调优)
+      * [JVM调优经验](#jvm调优经验)
+      * [一个小坑哦](#一个小坑哦)
+
+# Tomcat原理剖析
 以前总是被告诉Tomcat是一个应用的容器，用来运行Servlet，但是自己仍然有很多疑惑，它和Apache等服务器又有什么区别，它是怎么做到的？今天终于能从源码的角度去分析tomcat，来了解其作为应用容器，具体是怎么实现的。
 
 ## Tomcat与Servlet
@@ -41,14 +52,23 @@ executor="tomcatThreadPool" 指定使用的线程池
 
 -server：表示这是应用于服务器的配置
 （因为JVM有两种启动模式：client和server。server启动较慢，但性能好）
+
  -Xmx1024m：设置JVM最大可用内存为1024MB
+ 
  -Xms1024m：设置JVM最小内存为1024m。此值可以设置与-Xmx相同，以避免每次垃圾回收完成后JVM重新分配内存。
+ 
  -Xmn1024m：设置JVM新生代大小（JDK1.4之后版本）。一般-Xmn的大小是-Xms的1/2左右
+ 
  -XX:NewSize：设置新生代大小
+ 
  -XX:MaxNewSize：设置最大的新生代大小
+ 
  -XX:PermSize：设置永久代大小(淘汰)
+ 
  -XX:MaxPermSize：设置最大永久代大小（淘汰）
+ 
  -XX:NewRatio=2：设置年轻代（包括 Eden 和两个 Survivor 区）与终身代的比值（除去永久代）。设置为 2，则年轻代与终身代所占比值为 1：2，年轻代占整个堆栈的 1/2（设置了这个老年代的大小也就确定了，一般是设置为2，1：1）
+ 
  -XX:MaxTenuringThreshold=10：设置垃圾最大年龄，默认为：15
 
 ## JVM调优经验
@@ -56,12 +76,16 @@ executor="tomcatThreadPool" 指定使用的线程池
 修改 /usr/program/tomcat7/bin/catalina.sh 文件，把下面信息添加到文件第一行
 
 如果服务器只运行一个 Tomcat
+
 机子内存如果是 4G：
 CATALINA_OPTS="-Dfile.encoding=UTF-8 -server -Xms2048m -Xmx2048m -Xmn1024m -XX:PermSize=256m -XX:MaxPermSize=512m -XX:SurvivorRatio=10 -XX:MaxTenuringThreshold=15 -XX:NewRatio=2 -XX:+DisableExplicitGC"
+
 机子内存如果是 8G：
 CATALINA_OPTS="-Dfile.encoding=UTF-8 -server -Xms4096m -Xmx4096m -Xmn2048m -XX:PermSize=256m -XX:MaxPermSize=512m -XX:SurvivorRatio=10 -XX:MaxTenuringThreshold=15 -XX:NewRatio=2 -XX:+DisableExplicitGC"
+
 机子内存如果是 16G：
 CATALINA_OPTS="-Dfile.encoding=UTF-8 -server -Xms8192m -Xmx8192m -Xmn4096m -XX:PermSize=256m -XX:MaxPermSize=512m -XX:SurvivorRatio=10 -XX:MaxTenuringThreshold=15 -XX:NewRatio=2 -XX:+DisableExplicitGC"
+
 机子内存如果是 32G：
 CATALINA_OPTS="-Dfile.encoding=UTF-8 -server -Xms16384m -Xmx16384m -Xmn8192m -XX:PermSize=256m -XX:MaxPermSize=512m -XX:SurvivorRatio=10 -XX:MaxTenuringThreshold=15 -XX:NewRatio=2 -XX:+DisableExplicitGC"
 
