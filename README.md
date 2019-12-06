@@ -65,6 +65,8 @@
 - [ES初步了解，有时间再实现]
 
 ***
+## 🐾 百度实习日记
+- [实习之写在前面](https://github.com/WeiKangJian/LearningNotes/blob/master/Linux/Linux%E9%83%A8%E7%BD%B2%E4%B8%8A%E7%9A%84%E9%82%A3%E4%BA%9B%E5%9D%91.md)
 
 ## :wrench: 工具 
 - [Git]
