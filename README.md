@@ -66,7 +66,7 @@
 
 ***
 ## 🐾 百度实习日记
-- [实习之写在前面](https://github.com/WeiKangJian/LearningNotes/blob/master/%E5%AE%9E%E4%B9%A0/%E7%99%BE%E5%BA%A6%E7%A0%94%E5%8F%91%E5%B2%97%E5%AE%9E%E4%B9%A0%E9%9D%A2%E7%BB%8F.md)
+- [实习面经](https://github.com/WeiKangJian/LearningNotes/blob/master/%E5%AE%9E%E4%B9%A0/%E7%99%BE%E5%BA%A6%E7%A0%94%E5%8F%91%E5%B2%97%E5%AE%9E%E4%B9%A0%E9%9D%A2%E7%BB%8F.md)
 
 ## :wrench: 工具 
 - [Git]
