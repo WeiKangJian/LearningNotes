@@ -121,3 +121,16 @@ ps -ef |grep tomcat
 free -h
 ```
 **5：根据 pid删去无用的进程，kill**
+
+**6：根据问题逐个调试日志**
+
+查看Tomcat启动时候的日志：`catalina.out` 根据不同日志可查看不同的日志文件
+
+查看项目部署的具体情况： `localhost.2019-10-12.log` 
+
+查看项目中的访问情况，即所有用户的访问日志记录：  `localhost_access_log.2019-12-08.txt` 
+
+有时候 tomcat会被莫名其妙的关闭，需要在系统的内核日志中去查看。`/var/log/messages`
+
+有时候日志不打印，重启日志：`systemctl restart rsyslog`
+
