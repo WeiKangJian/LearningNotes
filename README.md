@@ -42,7 +42,7 @@
 ***
 
 ## :floppy_disk: 数据库
-- [MySQL]
+- [MySQL](https://github.com/WeiKangJian/LearningNotes/blob/master/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3/MySQL.md)
 - [Redis基础](https://github.com/WeiKangJian/LearningNotes/blob/master/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3/Redis%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93.md)
 ***
 ## :apple: 网络
