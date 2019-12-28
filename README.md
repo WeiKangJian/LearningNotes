@@ -66,8 +66,6 @@
 - [ES初步了解，有时间再实现]
 
 ***
-## 🐾 百度实习日记
-- [实习面经](https://github.com/WeiKangJian/LearningNotes/blob/master/%E5%AE%9E%E4%B9%A0/%E7%99%BE%E5%BA%A6%E7%A0%94%E5%8F%91%E5%B2%97%E5%AE%9E%E4%B9%A0%E9%9D%A2%E7%BB%8F.md)
 
 ## :wrench: 工具 
 - [Git](https://github.com/WeiKangJian/LearningNotes/blob/master/%E6%9D%82%E9%A1%B9/git%E6%80%BB%E7%BB%93.md)
