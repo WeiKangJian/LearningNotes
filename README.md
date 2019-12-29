@@ -69,7 +69,7 @@
 
 ## :wrench: 工具 
 - [Git](https://github.com/WeiKangJian/LearningNotes/blob/master/%E6%9D%82%E9%A1%B9/git%E6%80%BB%E7%BB%93.md)
-- [Git](https://github.com/WeiKangJian/LearningNotes/blob/master/%E6%9D%82%E9%A1%B9/GIT(2).md)
+- [Git进阶](https://github.com/WeiKangJian/LearningNotes/blob/master/%E6%9D%82%E9%A1%B9/GIT(2).md)
 - [Docker]
 - [Maven]
 - [Linux避坑指南](https://github.com/WeiKangJian/LearningNotes/blob/master/Linux/Linux%E9%83%A8%E7%BD%B2%E4%B8%8A%E7%9A%84%E9%82%A3%E4%BA%9B%E5%9D%91.md)
