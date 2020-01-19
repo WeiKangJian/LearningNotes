@@ -26,6 +26,9 @@ Git reset HEAD. 清空暂存区，工作目录不更改
    如果省略本地分支名，则表示删除指定的远程分支，因为这等同于推送一个空的本地分支到远程分支，等同于 git push origin --delete master
 (3): git push origin
    如果当前分支与远程分支存在追踪关系，则本地分支和远程分支都可以省略，将当前分支推送到origin主机的对应分支 
+   
+***关于 refs/for***
+refs/for 的意义在于我们提交代码到服务器之后是需要经过code review 之后才能进行merge的，而refs/heads 不需要
 
 ## 关于HEAD^ 和HEAD~
 1.建立如图所示分支
